@@ -223,11 +223,11 @@ try {
       page.click('button:has-text("Yes, buy now")').catch(_ => { });
 
       // Accept End User License Agreement (only needed once)
-      page.locator(':has-text("end user license agreement")').waitFor().then(async () => {
+      page.locator(':has-text("end user license agreement")').first().waitFor().then(async () => {
         console.log('  Accept End User License Agreement (only needed once)');
         console.log(page.innerHTML);
         console.log('Please report the HTML above here: https://github.com/vogler/free-games-claimer/issues/371');
-        await page.locator('input#agree').check(); // TODO Bundle: got stuck here; likely unrelated to bundle and locator just changed: https://github.com/vogler/free-games-claimer/issues/371
+        await page.locator('role=checkbox').first().check(); // TODO Bundle: got stuck here; likely unrelated to bundle and locator just changed: https://github.com/vogler/free-games-claimer/issues/371
         await page.locator('button:has-text("Accept")').click();
       }).catch(_ => { });
 
